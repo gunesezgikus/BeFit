@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BeFit.Models.DTOs.ExercisePerformedDTO>
+
+
+<h1>Exercise Performed</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().TrainingSessionName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().ExerciseTypeName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Load)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Sets)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Repetitions)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TrainingSessionName</td>
+                <td>@item.ExerciseTypeName</td>
+                <td>@item.Load</td>
+                <td>@item.Sets</td>
+                <td>@item.Repetitions</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
