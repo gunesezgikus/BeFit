@@ -1,27 +1,30 @@
 ﻿@model IEnumerable<BeFit.Models.ExerciseStats>
 
-<h2>Exercise Statistics</h2>
+@{
+    ViewData["Title"] = "İstatistikler / Stats";
+}
+
+<h1>İstatistikler <span class="text-muted fw-light">/ Statistics</span></h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Exercise Name</th>
-            <th>Total Sessions</th>
-            <th>Total Reps</th>
-            <th>Avg Load</th>
-            <th>Max Load</th>
+            <th>Egzersiz Adı <br /><small class="text-muted">Exercise Name</small></th>
+            <th>Toplam Oturum <br /><small class="text-muted">Total Sessions</small></th>
+            <th>Toplam Tekrar <br /><small class="text-muted">Total Reps</small></th>
+            <th>Ortalama Ağırlık (kg) <br /><small class="text-muted">Average Load (kg)</small></th>
+            <th>Maksimum Ağırlık (kg) <br /><small class="text-muted">Max Load (kg)</small></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var stat in Model)
-        {
-            <tr>
-                <td>@stat.ExerciseName</td>
-                <td>@stat.TotalSessions</td>
-                <td>@stat.TotalReps</td>
-                <td>@stat.AvgLoad</td>
-                <td>@stat.MaxLoad</td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ExerciseName)</td>
+            <td>@Html.DisplayFor(modelItem => item.TotalSessions)</td>
+            <td>@Html.DisplayFor(modelItem => item.TotalReps)</td>
+            <td>@Html.DisplayFor(modelItem => item.AvgLoad)</td>
+            <td>@Html.DisplayFor(modelItem => item.MaxLoad)</td>
+        </tr>
+}
     </tbody>
 </table>

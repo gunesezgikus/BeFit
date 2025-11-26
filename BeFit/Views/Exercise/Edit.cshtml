@@ -1,12 +1,12 @@
-﻿@model BeFit.Models.ExercisePerformed
+﻿@model BeFit.Models.Exercise
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Düzenle / Edit";
 }
 
-<h1>Edit</h1>
+<h1>Düzenle <span class="text-muted fw-light">/ Edit</span></h1>
 
-<h4>ExercisePerformed</h4>
+<h4>Egzersiz <span class="text-muted fw-light">/ Exercise</span></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,28 +25,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="Load" class="control-label"></label>
-                <input asp-for="Load" class="form-control" />
+                <input asp-for="Load" class="form-control" placeholder="Egzersiz için kullanılan ağırlık" />
                 <span asp-validation-for="Load" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Sets" class="control-label"></label>
-                <input asp-for="Sets" class="form-control" />
+                <input asp-for="Sets" class="form-control" placeholder="Yapılan set sayısı" />
                 <span asp-validation-for="Sets" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Repetitions" class="control-label"></label>
-                <input asp-for="Repetitions" class="form-control" />
+                <input asp-for="Repetitions" class="form-control" placeholder="Set başına tekrar sayısı" />
                 <span asp-validation-for="Repetitions" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet / Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-3">
+    <a asp-action="Index">Listeye Dön / Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,8 +1,37 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Hoşgeldiniz <span class="text-muted fw-light" style="font-size: 0.6em">/ Welcome</span></h1>
+    <p>BeFit Uygulamasına Hoşgeldiniz <span class="text-muted">/ Welcome to BeFit App</span></p>
 </div>
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4>Test Hesap Bilgileri <small>/ Test Account Information</small></h4>
+            </div>
+            <div class="card-body">
+                <p>Uygulamayı test etmek için aşağıdaki hesapları kullanabilirsiniz <span class="text-muted">/ Use the following accounts to test the application</span>:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Admin Hesabı <small class="text-muted">/ Admin Account</small></h5>
+                        <p><strong>Kullanıcı Adı / Username:</strong> admin@befit.com</p>
+                        <p><strong>Şifre / Password:</strong> Admin123!</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Örnek Kullanıcı Hesabı <small class="text-muted">/ Example User Account</small></h5>
+                        <p><strong>Kullanıcı Adı / Username:</strong> abc@gmail.com</p>
+                        <p><strong>Şifre / Password:</strong> Abc123!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

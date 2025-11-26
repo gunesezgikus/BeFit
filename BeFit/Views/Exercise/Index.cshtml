@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BeFit.Models.Exercise>
+
+@{
+    ViewData["Title"] = "Egzersizler / Exercises";
+}
+
+<h1>Egzersizler <span class="text-muted fw-light">/ Exercises</span></h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Oluştur / Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Antrenman Oturumu <br /><small class="text-muted">Training Session</small>
+            </th>
+            <th>
+                Egzersiz Türü <br /><small class="text-muted">Exercise Type</small>
+            </th>
+            <th>
+                Ağırlık (kg) <br /><small class="text-muted">Load</small>
+            </th>
+            <th>
+                Setler <br /><small class="text-muted">Sets</small>
+            </th>
+            <th>
+                Tekrarlar <br /><small class="text-muted">Reps</small>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingSession!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseType!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Load)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repetitions)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle / Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detaylar / Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil / Delete</a>
+            </td>
+        </tr>
+}        
+    </tbody>
+</table>

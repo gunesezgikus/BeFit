@@ -13,8 +13,8 @@ namespace BeFit.Data
 
         }
         public DbSet<ExerciseType> ExerciseType { get; set; } = default!;
-        public DbSet<TrainingSessions> TrainingSessions { get; set; } = default!;
-        public DbSet<ExercisePerformed> ExercisePerformed { get; set; } = default!;
+        public DbSet<TrainingSession> TrainingSessions { get; set; } = default!;
+        public DbSet<Exercise> Exercises { get; set; } = default!;
 
     }
 }

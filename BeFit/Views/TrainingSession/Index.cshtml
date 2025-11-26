@@ -1,20 +1,25 @@
-﻿@model IEnumerable<BeFit.Models.ExerciseType>
+﻿@model IEnumerable<BeFit.Models.TrainingSession>
 
 @{
-    ViewData["Title"] = "Egzersiz Türleri / Exercise Types";
+    ViewData["Title"] = "Antrenmanlar / Trainings";
 }
 
-<h1>Egzersiz Türleri <span class="text-muted fw-light">/ Exercise Types</span></h1>
+<h1>Antrenmanlar <span class="text-muted fw-light">/ Trainings</span></h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Yeni Oluştur / Create New</a>
 </p>
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                Egzersiz Adı <br /><small class="text-muted">Exercise Name</small>
+                Antrenman Adı <br /><small class="text-muted">Session Name</small>
+            </th>
+            <th>
+                Başlangıç Zamanı <br /><small class="text-muted">Start Time</small>
+            </th>
+            <th>
+                Bitiş Zamanı <br /><small class="text-muted">End Time</small>
             </th>
             <th></th>
         </tr>
@@ -26,11 +31,17 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Düzenle / Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detaylar / Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Sil / Delete</a>
             </td>
         </tr>
-}        
+}
     </tbody>
 </table>

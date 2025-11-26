@@ -1,13 +1,16 @@
 ﻿using BeFit.Data;
 using BeFit.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace BeFit.Controllers
 {
+    [Authorize]
     public class StatsController : Controller
     {
-
         private readonly ApplicationDbContext _context;
 
         public StatsController(ApplicationDbContext context)
@@ -17,13 +20,14 @@ namespace BeFit.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var fourWeeksAgo = DateTime.Now.AddDays(-28);
 
-            var stats = await _context.ExercisePerformed
+            var stats = await _context.Exercises
                 .Include(ep => ep.ExerciseType)
                 .Include(ep => ep.TrainingSession)
-                .Where(ep => ep.TrainingSession.StartTime >= fourWeeksAgo)
-                .GroupBy(ep => ep.ExerciseType.Name)
+                .Where(ep => ep.TrainingSession!.UserId == userId && ep.TrainingSession.StartTime >= fourWeeksAgo)
+                .GroupBy(ep => ep.ExerciseType!.Name)
                 .Select(g => new ExerciseStats
                 {
                     ExerciseName = g.Key,
@@ -36,6 +40,5 @@ namespace BeFit.Controllers
 
             return View(stats);
         }
-
     }
 }

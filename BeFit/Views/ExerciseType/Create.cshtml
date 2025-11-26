@@ -1,12 +1,12 @@
 ﻿@model BeFit.Models.ExerciseType
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Oluştur / Create";
 }
 
-<h1>Create</h1>
+<h1>Oluştur <span class="text-muted fw-light">/ Create</span></h1>
 
-<h4>ExerciseType</h4>
+<h4>Egzersiz Türü <span class="text-muted fw-light">/ Exercise Type</span></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,18 +14,18 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" placeholder="Egzersiz türünün adı" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-3">
+                <input type="submit" value="Oluştur / Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-3">
+    <a asp-action="Index">Listeye Dön / Back to List</a>
 </div>
 
 @section Scripts {

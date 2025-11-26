@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace BeFit.Controllers
 {
     public class ExerciseTypeController : Controller
@@ -20,17 +22,10 @@ namespace BeFit.Controllers
             _context = context;
         }
 
+        // GET: ExerciseType
         public async Task<IActionResult> Index()
         {
-            var dtoList = await _context.ExerciseType
-                .Select(e => new ExerciseTypeDTO
-                {
-                    Id = e.Id,
-                    Name = e.Name,
-                })
-                .ToListAsync();
-
-            return View(dtoList);
+            return View(await _context.ExerciseType.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -50,14 +45,17 @@ namespace BeFit.Controllers
             return View(exerciseType);
         }
 
+        // GET: ExerciseType/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        
+        // POST: ExerciseType/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name")] ExerciseType exerciseType)
         {
             if (ModelState.IsValid)
@@ -69,6 +67,7 @@ namespace BeFit.Controllers
             return View(exerciseType);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +85,7 @@ namespace BeFit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ExerciseType exerciseType)
         {
             if (id != exerciseType.Id)
@@ -116,6 +116,7 @@ namespace BeFit.Controllers
             return View(exerciseType);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +136,7 @@ namespace BeFit.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var exerciseType = await _context.ExerciseType.FindAsync(id);

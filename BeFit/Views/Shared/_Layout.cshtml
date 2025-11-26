@@ -20,28 +20,38 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark text-center" asp-area="" asp-controller="Home" asp-action="Index" style="line-height: 1.1;">
+                                Ana Sayfa <br /> <small class="text-muted" style="font-size: 0.7em;">Home</small>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="TrainingSessions" asp-action="Index">
-                                Training Sessions
+                            <a class="nav-link text-dark text-center" asp-controller="TrainingSession" asp-action="Index" style="line-height: 1.1;">
+                                Antrenmanlar <br /> <small class="text-muted" style="font-size: 0.7em;">Trainings</small>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="ExerciseType" asp-action="Index">
-                                Exercise Types
+                            <a class="nav-link text-dark text-center" asp-controller="ExerciseType" asp-action="Index" style="line-height: 1.1;">
+                                Egzersiz Türleri <br /> <small class="text-muted" style="font-size: 0.7em;">Exercise Types</small>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="ExercisePerformed" asp-action="Index">
-                                Exercise Performed
+                            <a class="nav-link text-dark text-center" asp-controller="Exercise" asp-action="Index" style="line-height: 1.1;">
+                                Egzersizler <br /> <small class="text-muted" style="font-size: 0.7em;">Exercises</small>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark text-center" asp-controller="Stats" asp-action="Index" style="line-height: 1.1;">
+                                İstatistikler <br /> <small class="text-muted" style="font-size: 0.7em;">Stats</small>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-center" asp-area="" asp-controller="Home" asp-action="Privacy" style="line-height: 1.1;">
+                                Gizlilik <br /> <small class="text-muted" style="font-size: 0.7em;">Privacy</small>
+                            </a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

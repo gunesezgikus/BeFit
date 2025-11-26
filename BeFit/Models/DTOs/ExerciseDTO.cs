@@ -2,23 +2,23 @@
 
 namespace BeFit.Models.DTOs
 {
-    public class ExercisePerformedDTO
+    public class ExerciseDTO
     {
         public int Id { get; set; }
 
-        [Display(Name = "Training Session")]
+        [Display(Name = "Antrenman Oturumu / Training Session")]
         public int TrainingSessionId { get; set; }
 
-        [Display(Name = "Exercise Type")]
+        [Display(Name = "Egzersiz Türü / Exercise Type")]
         public int ExerciseTypeId { get; set; }
 
-        [Display(Name = "Load (kg)")]
+        [Display(Name = "Ağırlık (kg) / Load")]
         public float Load { get; set; }
 
-        [Display(Name = "Sets")]
+        [Display(Name = "Setler / Sets")]
         public int Sets { get; set; }
 
-        [Display(Name = "Repetitions")]
+        [Display(Name = "Tekrarlar / Reps")]
         public int Repetitions { get; set; }
 
        
